@@ -27,7 +27,7 @@
 
                                 
                                 <h5 v-show="isLogged" class="ml-4 text-white">
-                                    <span class="mr-2" @click="logOut()">Log Out</span> / <span class="ml-2" @click="openProfile()">My Profile</span>
+                                    <span class="mr-2" @click="openProfile()">My Profile</span> / <span class="ml-2" @click="logOut()">Log Out</span>
                                 </h5>
 
                                 <h5 v-show="!isLogged" class="ml-4 text-white">
