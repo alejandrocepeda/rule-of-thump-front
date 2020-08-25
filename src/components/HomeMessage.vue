@@ -21,6 +21,6 @@
 
 <script>
 export default {
-    name:' Alert'
+    name:'HomeMessage'
 }
 </script>

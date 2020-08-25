@@ -40,7 +40,22 @@
 
            
                 
-            <PostVoteResults :post="post"/> 
+            <!--<PostVoteResults :post="post"/> -->
+
+            <div style="bottom: 0;right: -1px;left: 0;" class="row position-absolute m-0">   
+
+                <div :style="`width:${resultsLike}%`" class="overlay-follow-results"></div>
+
+                <div style="bottom:10px; position:absolute; z-index:1;left:5px; top:5px" class="form-inline float-left">
+                    <i class="ml-2 mr-2 mdi mdi-38px mdi-thumb-up"></i><h2>{{ resultsLike }} %</h2>
+                </div>
+
+                <div :style="`width:${resultsDisLike}%`" class="overlay-unfollow-results"></div>
+
+                <div style="bottom:10px; position:absolute; z-index:1; right:5px; top:5px" class="form-inline float-right">
+                    <h2 >{{ resultsDisLike }} %</h2><i class="ml-2 mr-2 mdi mdi-38px mdi-thumb-down"></i>
+                </div>
+            </div>
 
             
             
@@ -58,24 +73,36 @@ export default {
         PostVoteResults
     },
     name: 'Post',
-    data(){
-        return {
-            voteThisPost:{
-                like: false,
-                dislike: false,
-            }
-        }
-    },
-    computed:{
-        ...mapState(['isLogged','authUser'])
-    },    
     props:{
         post:{
             type: Object,
             required: true
         }
     },
-    methods:{
+    data(){
+        return {
+            voteThisPost:{
+                like: false,
+                dislike: false,
+            },
+            resultsLike:0,
+            resultsDisLike:0
+        }
+    },
+    computed:{
+        ...mapState(['isLogged','authUser']),
+    },        
+    mounted(){
+        this.calcPorc(this.post.like_count,this.post.dislike_count)
+    },
+    methods:{    
+        calcPorc(like_count,dislike_count){
+            this.resultsLike = (like_count * 100 ) / (like_count + dislike_count)        
+            this.resultsLike = Math.round(this.resultsLike)
+        
+            this.resultsDisLike = (dislike_count * 100 ) / (like_count + dislike_count)
+            this.resultsDisLike = Math.round(this.resultsDisLike)        
+        },
         voteDisLike(){
             this.voteThisPost.dislike = !this.voteThisPost.dislike
             this.voteThisPost.like = false
@@ -91,26 +118,32 @@ export default {
                 return 
             }
 
-            const toPost = {
-                post_id: this.post.id,
-                user_id: this.authUser.user.id,
-                like_count: this.voteThisPost.like,
-                dislike_count: this.voteThisPost.dislike
+            try {
+                const toPost = {
+                    post_id: this.post.id,
+                    user_id: this.authUser.id,
+                    like_count: this.voteThisPost.like,
+                    dislike_count: this.voteThisPost.dislike
+                }
+
+                await axios.post('users-votes',toPost)
+
+                this.$swal({
+                    title: this.$t('Good job!'),
+                    text: this.$t("You can vote again whenever you want"),
+                    type: 'success',
+                    customClass: 'bg-body',                
+                    confirmButtonText: this.$t('continue')
+                })
+
+                const post = await this.$store.dispatch('getPost',this.post.id)
+                
+                this.calcPorc(post.like_count,post.dislike_count)
+                
+            } catch (error) {
+                console.log(error)                
             }
-
-            const response = await axios.post('users-votes',toPost)
-
-            this.$swal({
-                title: this.$t('Good job!'),
-                text: this.$t("You can vote again whenever you want"),
-                type: 'success',
-                customClass: 'bg-body',                
-                confirmButtonText: this.$t('continue')
-            })
-
-
             
-            this.$store.dispatch('getPots')
         }
     }
 }

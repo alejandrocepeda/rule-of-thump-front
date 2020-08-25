@@ -12,20 +12,20 @@
 
                                 <div class="form-group">
                                     
-                                    <div class="input-group" :class="{'is-danger': errors.email }">
+                                        <label for="exampleInputEmail1">Username or email</label>  
                                         
                                         <input class="form-control input-border" v-model="form.email" type="email" placeholder="Username or email">
-                                    </div>
-                                    <span v-if="errors.email" class="text-danger float-left small">{{ errors.email }}</span>
+                                   
+                                    <span v-if="errors.email" class="text-danger small">{{ errors.email }}</span>
                                 </div>
 
                                 <div class="form-group ">
                                     
-                                    <div class="input-group" :class="{'is-danger': errors.password }">
-                                        <input class="form-control input-border" v-model="form.password" type="password" placeholder="Password">
-                                    </div>
+                                    <label>Password</label>  
+                                    <input class="form-control input-border" v-model="form.password" type="password" placeholder="Password">
                                     
-                                    <span v-if="errors.password" class="text-danger float-left small">{{ errors.password }}</span>
+                                    
+                                    <span v-if="errors.password" class="text-danger small">{{ errors.password }}</span>
                                 </div>
 
                                 <div class="form-group ">
@@ -66,15 +66,15 @@ export default {
     data () {
         return {
             form: {
-                email: 'alejandrocepeda25@gmail.com',
-                password: '010203'
+                email: '',
+                password: ''
             },
             errors: {
                 email: false,
                 password: false,
                 credentials: false
             },
-            loading: false,            
+            
         }
     },
     watch: {
@@ -122,12 +122,12 @@ export default {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email)
         },           
-        Login(){
+        async Login(){
             
             
             if (this.validform()) {
 
-                this.loading = true
+                
                 const app = this
 
                 const payload = {
@@ -135,25 +135,17 @@ export default {
                     password: this.form.password
                 }
                 
-                this.$store.dispatch('AuthBasic',payload)
-                .then((response) => {
-                    
-                    this.loading = false
-                    this.$store.commit('SET_OPEN_MODAL',false)                    
-                })
-                .catch((error) => {
+                try {
+                    const response = await this.$store.dispatch('AuthBasic',payload)    
 
-                    this.loading = false
-                    
+                    this.$store.commit('SET_OPEN_MODAL',false)                    
+                } catch (error) {
                     this.errors.credentials = 'Incorrect email or password'
                     
                     setTimeout(() => {
                         this.errors.credentials = false
                     },3000)
-                    
-                })
-                
-                
+                }                
             }
             
         },

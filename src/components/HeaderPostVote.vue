@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div  class="position-relative  col-5 text-white mt-5 mb-5">
+        <div  class="position-relative  col-md-5 col-sm-12 text-white mt-5 mb-5">
                         
             <div style="background-color: rgb(0 0 0 / 40%);backdrop-filter: blur(20px);" class="p-4 row">
                 <div class="col">

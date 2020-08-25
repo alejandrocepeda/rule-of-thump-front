@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-5 pl-0 pr-0">
         
-        <Alert/> 
+        <HomeMessage/> 
 
         <div class="row mt-4">
           <div class="col">
@@ -22,22 +22,17 @@
 
 <script>
 
-import Alert from '@/components/Alert'
+import HomeMessage from '@/components/HomeMessage'
 import Post from '@/components/Post'
 import { mapState } from 'vuex'
 
 export default {
     components:{
-      Alert, Post
+      HomeMessage, Post
     },
-    name: 'Home',
-    data(){
-      return {
-        
-      }
-    },    
+    name: 'Home',    
     created(){
-      this.$store.dispatch('getPots')            
+      this.$store.dispatch('getPosts')            
     },
     computed:{        
       ...mapState([      

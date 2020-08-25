@@ -27,7 +27,7 @@ const actions = {
           .Basic(username,password)
           .then(response => {
               commit('SET_IS_LOGGED',true)
-              commit('SET_USER_AUTH',response.data)
+              commit('SET_USER_AUTH',response.data.user)
               commit('SET_AUTH_TOKEN',response.data.token)
 
               window.axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
@@ -46,7 +46,7 @@ const actions = {
     
     window.axios.defaults.headers.common['Authorization'] = ''
   },
-  async getPots({ commit }){
+  async getPosts({ commit }){
         
     return new Promise((resolve, reject) => {
         Service.Posts().getAll().then((response) => {    
@@ -59,7 +59,69 @@ const actions = {
             reject(error)
         })
     })
-  }
+  },
+  async setUser({ commit },payload){
+    return new Promise((resolve, reject) => {
+      
+      Service.Users().update(payload.id,payload).then((response)=>{
+
+          
+          resolve(response.data.data)
+      })
+      .catch(error => {
+          reject(error)
+      })
+    })  
+  },
+  async setPost({ commit },payload){
+    return new Promise((resolve, reject) => {
+      
+      Service.Posts().update(payload.id,payload).then((response)=>{
+
+          
+          resolve(response.data)
+      })
+      .catch(error => {
+          reject(error)
+      })
+    })  
+  },
+  async getPost({ commit },payload){
+        
+    return new Promise((resolve, reject) => {
+        Service.Posts().getOne(payload).then((response) => {    
+          
+            resolve(response.data)
+        })
+        .catch(error => {
+            reject(error)
+        })
+    })
+  },
+  async getUser({ commit },payload){
+    return new Promise((resolve, reject) => {
+
+      
+      Service.Users().getOne(payload).then((response)=>{
+        
+          resolve(response.data)
+      })
+      .catch(error => {
+          reject(error)
+      })
+    })  
+  },
+  async addUser({ commit },payload){
+    return new Promise((resolve, reject) => {
+      
+      Service.Users().store(payload).then((response)=>{
+          resolve(response.data.data)
+      })
+      .catch(error => {
+          reject(error)
+      })
+    })  
+  },
 }
 
 const mutations = {

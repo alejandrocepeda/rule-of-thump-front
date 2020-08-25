@@ -30,6 +30,7 @@ router.beforeEach((to, from, next) => {
     
 })
 
+store.state._openModal = false
 
 //console.log(store.state.authToken)
 
