@@ -1,0 +1,133 @@
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+
+
+body{
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+a{   
+    text-decoration: none !important;
+    color: #fff !important
+}
+
+a:active{   
+    color: #fff !important
+}
+
+h1{
+    font-size: 3.4rem !important;
+    font-weight: 400 !important;
+}
+
+
+.text-dark{
+    color:#000 !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.mdi-68px.mdi-set, .mdi-68px.mdi:before{
+    font-size: 68px;
+}
+.mdi-58px.mdi-set, .mdi-58px.mdi:before{
+    font-size: 58px;
+}
+.mdi-48px.mdi-set, .mdi-48px.mdi:before{
+    font-size: 48px;
+}
+.mdi-38px.mdi-set, .mdi-38px.mdi:before{
+    font-size: 38px;
+}
+.mdi-28px.mdi-set, .mdi-28px.mdi:before{
+    font-size: 28px;
+}
+.mdi-18px.mdi-set, .mdi-18px.mdi:before{
+    font-size: 18px;
+}
+
+.overlay-gradient{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,0.036852240896358524) 41%, rgba(0,0,0,0.5942752100840336) 100%);
+    height: 280px;
+    width: 100%;
+    z-index: 1;
+}  
+
+.container{
+    max-width: 1300px;
+}
+.header{
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-image: url('../../assets/img/header.png');
+    background-position: 0% 30%;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #55BBB4;
+    border-color: #55BBB4;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #55BBB4 !important;
+    border-color: #55BBB4;
+}
+
+.btn-success:active {
+    color: #fff;
+    background-color: #55BBB4 !important;
+    border-color: #55BBB4;
+}
+
+.btn-warning {
+    color: #212529;
+    background-color: #F2AC1C;
+    border-color: #F2AC1C;
+}
+
+.btn-warning:hover {
+    color: #212529;
+    background-color: #F2AC1C;
+    border-color: #F2AC1C;
+}
+
+.btn-warning:active {
+    color: #212529;
+    background-color: #F2AC1C;
+    border-color: #F2AC1C;
+}
+
+.centered {
+    position: absolute;
+    top: 58%;
+}
+
+.overlay-post{
+    width: 100%;
+    height: 65%;
+    bottom: 0;
+    position: absolute;background: rgb(0,0,0);
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,0.5746673669467788) 37%, rgba(0,0,0,0) 100%);
+}
+
+.overlay-follow-results{
+    background-color: #55BBB4;
+    opacity: 0.7;    
+    height: 65px;
+}
+
+.overlay-unfollow-results{
+    background-color: #F2AC1C;
+    opacity: 0.7;    
+    height: 65px;
+}

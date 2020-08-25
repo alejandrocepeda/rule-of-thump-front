@@ -1,0 +1,35 @@
+{
+  "name": "rule-of-thump",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "dotenv-webpack": "^1.7.0",
+    "@mdi/font": "^5.3.45",
+    "@mdi/js": "^5.3.45",
+    "axios": "^0.18.1",
+    "axios-progress-bar": "^1.2.0",
+    "bootstrap-vue": "^2.16.0",
+    "core-js": "^3.6.5",
+    "moment": "^2.24.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^7.3.1",
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.0.0",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "^3.0.1",
+    "secure-ls": "^1.2.6",
+    "vue-sweetalert2": "^1.6.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
