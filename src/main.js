@@ -6,11 +6,13 @@ import router from './router'
 import { store } from './store'
 
 import fromNow from '@/filters/fromNow'
+import formatDate from '@/filters/formatDate'
 import BootstrapVue from 'bootstrap-vue'
 import VueSweetalert2 from 'vue-sweetalert2'
 import i18n from './i18n'
 
 Vue.use(fromNow)
+Vue.use(formatDate)
 Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2)
 

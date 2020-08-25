@@ -12,30 +12,36 @@
                 
               
                 <div class="row mb-5">
-                    <div style="z-index: 2;" class="col-md-5 col-sm-12 float-left pl-0">
+                    <div style="z-index: 2;" class="col-md-4 col-sm-12 float-left pl-0">
                        
                         <router-link :to="{name:'home'}"><h2 class="text-white">Rule of Thump.</h2></router-link>
                     </div>
     
-                    <div style="z-index: 2;" class="col-md-7 col-sm-12 float-right pr-0">
+                    <div style="z-index: 2;" class="col-md-8 col-sm-12 float-right pr-0">
                         
                         <div class="form-inline float-right">
-                            <router-link :to="{name:'past-trials'}"><h5 class="ml-5 text-white">{{ $t('Past Trials')}}</h5></router-link>
-                            <router-link :to="{name:'how-it-works'}"><h5 class="ml-5 text-white">{{ $t('How it Works')}}</h5></router-link>
-
+                            <router-link :to="{name:'past-trials'}"><h5 class="ml-4 text-white">{{ $t('Past Trials')}}</h5></router-link>
+                            <router-link :to="{name:'how-it-works'}"><h5 class="ml-4 text-white">{{ $t('How it Works')}}</h5></router-link>
+                            <router-link :to="{name:'users-votes'}"><h5 class="ml-4 text-white">{{ $t('Results')}}</h5></router-link>
                             <a class="cursor-pointer">
 
                                 
-                                <h5 v-show="isLogged" class="ml-5 text-white"> <span class="mr-2" @click="logOut()">Log Out</span> / <span class="ml-2" @click="openProfile()">Profile</span></h5>
+                                <h5 v-show="isLogged" class="ml-4 text-white">
+                                    <span class="mr-2" @click="logOut()">Log Out</span> / <span class="ml-2" @click="openProfile()">My Profile</span>
+                                </h5>
 
-                                <h5 v-show="!isLogged" class="ml-5 text-white"> <span class="mr-2" @click="openLogin()">Log In</span> / <span class="ml-2" @click="openSignUp()">Sign Up</span> </h5>
+                                <h5 v-show="!isLogged" class="ml-4 text-white">
+                                    <span class="mr-2" @click="openLogin()">Log In</span> / <span class="ml-2" @click="openSignUp()">Sign Up</span>
+                                </h5>
+                                
+                                
                                 
                             </a>
                             
                             
                             
                             <a href="">
-                                <h5 class="ml-5 text-white">
+                                <h5 class="ml-4 text-white">
                                     <i class="mdi mdi-28px mdi-magnify"></i>
                                 </h5>
                             </a>

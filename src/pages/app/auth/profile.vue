@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="align-items-center auth-login">
-            <h3 class="text-center page-title">Update Profile</h3>  
+            <h3 class="text-center page-title">Update My Profile</h3>  
             <div class="row w-100 mx-auto">
                         
                 <div class="col-md-12 mx-auto p-5">

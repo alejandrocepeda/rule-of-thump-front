@@ -14,6 +14,7 @@ const state = {
   isLogged: false,
   authUser:null,
   authToken:null,
+  usersVotes:[]
 }
 
 const actions = {
@@ -53,6 +54,20 @@ const actions = {
           
             
             commit('SET_POSTS',response.data.data)
+            resolve(response.data.data)
+        })
+        .catch(error => {
+            reject(error)
+        })
+    })
+  },
+  async getUsersVotes({ commit }){
+        
+    return new Promise((resolve, reject) => {
+        Service.UsersVotes().getAll().then((response) => {    
+          
+            
+            commit('SET_USERS_VOTES',response.data.data)
             resolve(response.data.data)
         })
         .catch(error => {
@@ -125,6 +140,9 @@ const actions = {
 }
 
 const mutations = {
+  SET_USERS_VOTES(state, data){
+    state.usersVotes = data
+  },
   SET_POSTS(state, data){
     state.posts = data
   },

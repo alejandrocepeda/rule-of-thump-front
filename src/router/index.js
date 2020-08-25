@@ -35,6 +35,13 @@ export default new Router({
 					meta: {title: 'Sign In'},
 					component: () => import('@/pages/app/auth'),
 					
+				},
+				{
+					path: '/app/users-votes',
+					name: 'users-votes',
+					meta: {title: 'Users Votes'},
+					component: () => import('@/pages/app/usersVotes'),
+					
 				}
 			]
 		}

@@ -29,7 +29,16 @@ function Users(url = 'users'){
     }
 }
 
+function UsersVotes(url = 'users-votes'){
+    return {        
+        getAll: (async () => {
+            return await axios.get(url)
+        })  
+    }
+}
+
 export default  {    
     Posts,
-    Users
+    Users,
+    UsersVotes
 }
