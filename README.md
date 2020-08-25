@@ -3,6 +3,12 @@
 ## Project setup
 ```
 npm install
+cp .env.example .env
+```
+
+### Change you .env
+```
+API_URL=http://localhost:8000/api
 ```
 
 ### Compiles and hot-reloads for development
